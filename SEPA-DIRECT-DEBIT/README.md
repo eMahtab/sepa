@@ -23,7 +23,9 @@ This file contains:
 
 * BIC codes for the financial institutions
 
-This is a CORE scheme file (for consumers) with RCUR sequence type (recurring payment). The file requests collection of €600 total (€400 from John Smith and €200 from Maria Garcia) to be collected on May 10, 2025.
+This is a CORE scheme file (for consumers) with RCUR sequence type (recurring payment). 
+
+The file requests collection of €600 total (€400 from John Smith and €200 from Maria Garcia) to be collected on May 10, 2025.
 
 
 
