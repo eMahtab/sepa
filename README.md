@@ -14,7 +14,7 @@ In simple terms, anyone who holds a payment account with a bank or other payment
 
 The Payment Services Directives (PSD) — namely PSD1 (2007) and PSD2 (2015) — are EU regulatory frameworks that govern payment services across the European Economic Area (EEA). 
 
-## SEPA Direct Debit : https://github.com/eMahtab/sepa/tree/main/SEPA-DIRECT-DEBIT
+## [SEPA Direct Debit](https://github.com/eMahtab/sepa/tree/main/SEPA-DIRECT-DEBIT)
 
 
 # References :
