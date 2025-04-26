@@ -10,6 +10,8 @@ SEPA, which came into force in 2014, created a single market for euro-denominate
 In simple terms, anyone who holds a payment account with a bank or other payment service provider (PSP) located in the countries covered by the SEPA initiative will, regardless of where in SEPA they are themselves located, be able to send euro-denominated payments to, and receive such payments from, accounts anywhere else in SEPA.
 
 
+## Payment Services Directive (PSD) :
+
 
 
 # References :
