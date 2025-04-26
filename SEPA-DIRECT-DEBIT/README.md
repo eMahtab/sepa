@@ -155,3 +155,9 @@ The file requests collection of €600 total (€400 from John Smith and €200 
   </CstmrDrctDbtInitn>
 </Document>
 ```
+
+
+# References :
+
+SEPA Direct Debit XML fields details :
+https://docs.oracle.com/en/applications/jd-edwards/localizations/9.2/eoael/group-header-elements.html
