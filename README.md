@@ -1,6 +1,6 @@
 # SEPA
 
-Single Euro Payments Area (SEPA)
+## Single Euro Payments Area (SEPA)
 
 What is SEPA?
 The Single Euro Payments Area initiative (or SEPA), covers all of the EU member states, together with Iceland, Liechtenstein, Norway, Switzerland and Monaco.
