@@ -11,7 +11,7 @@ This file contains:
 
 3. Two direct debit transactions (DrctDbtTxInf) for different customers
 
-Key elements included:
+## Key elements included:
 
 * Creditor identification and account information
 
