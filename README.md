@@ -17,6 +17,13 @@ The Payment Services Directives (PSD) — namely PSD1 (2007) and PSD2 (2015) —
 ## [SEPA Direct Debit](https://github.com/eMahtab/sepa/tree/main/SEPA-DIRECT-DEBIT)
 
 
+# Acronyms :
+
+* SEPA : Single Euro Payments Area
+* IBAN : International Bank Account Number 
+* BIC : Branch Identifier Code
+
+
 # References :
 
 SEPA : https://www.centralbank.ie/financial-system/payments-and-securities-settlements/single-european-payments-overview
