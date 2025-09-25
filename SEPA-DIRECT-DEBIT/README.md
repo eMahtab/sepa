@@ -156,6 +156,159 @@ The file requests collection of €600 total (€400 from John Smith and €200 
 </Document>
 ```
 
+## pain008.001.08 version
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.008.001.08" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CstmrDrctDbtInitn>
+    <GrpHdr>
+      <MsgId>MSGID-2025-04-26T12345</MsgId>
+      <CreDtTm>2025-04-26T10:30:00</CreDtTm>
+      <NbOfTxs>2</NbOfTxs>
+      <CtrlSum>600.00</CtrlSum>
+      <InitgPty>
+        <Nm>ACME Corporation</Nm>
+        <Id>
+          <OrgId>
+            <Othr>
+              <Id>DE98ZZZ09999999999</Id>
+              <SchmeNm>
+                <Prtry>SEPA</Prtry> <!-- Changed from <Cd>SEPA</Cd> to align with newer schema -->
+              </SchmeNm>
+            </Othr>
+          </OrgId>
+        </Id>
+      </InitgPty>
+    </GrpHdr>
+    <PmtInf>
+      <PmtInfId>PMTINFID-2025-04-26-1</PmtInfId>
+      <PmtMtd>DD</PmtMtd>
+      <BtchBookg>true</BtchBookg>
+      <NbOfTxs>2</NbOfTxs>
+      <CtrlSum>600.00</CtrlSum>
+      <PmtTpInf>
+        <SvcLvl>
+          <Cd>SEPA</Cd>
+        </SvcLvl>
+        <LclInstrm>
+          <Cd>CORE</Cd>
+        </LclInstrm>
+        <SeqTp>RCUR</SeqTp>
+      </PmtTpInf>
+      <ReqdColltnDt>2025-05-10</ReqdColltnDt>
+      <Cdtr>
+        <Nm>ACME Corporation</Nm>
+        <!-- Optional: Add structured address if required -->
+        <!-- <PstlAdr>
+          <Ctry>DE</Ctry>
+          <AdrLine>123 Business Street, Berlin</AdrLine>
+        </PstlAdr> -->
+      </Cdtr>
+      <CdtrAcct>
+        <Id>
+          <IBAN>DE89370400440532013000</IBAN>
+        </Id>
+      </CdtrAcct>
+      <CdtrAgt>
+        <FinInstnId>
+          <BICFI>DEUTDEFFXXX</BICFI> <!-- Updated to BICFI as per schema -->
+        </FinInstnId>
+      </CdtrAgt>
+      <ChrgBr>SLEV</ChrgBr> <!-- Added for pain.008.001.08 -->
+      <CdtrSchmeId>
+        <Id>
+          <PrvtId>
+            <Othr>
+              <Id>DE98ZZZ09999999999</Id>
+              <SchmeNm>
+                <Prtry>SEPA</Prtry>
+              </SchmeNm>
+            </Othr>
+          </PrvtId>
+        </Id>
+      </CdtrSchmeId>
+      <!-- First Transaction -->
+      <DrctDbtTxInf>
+        <PmtId>
+          <EndToEndId>ENDTOEND-2025-04-26-1</EndToEndId>
+        </PmtId>
+        <InstdAmt Ccy="EUR">400.00</InstdAmt>
+        <ChrgBr>SLEV</ChrgBr> <!-- Added for pain.008.001.08 -->
+        <DrctDbtTx>
+          <MndtRltdInf>
+            <MndtId>MANDATE-2023-01-15-1</MndtId>
+            <DtOfSgntr>2023-01-15</DtOfSgntr>
+          </MndtRltdInf>
+        </DrctDbtTx>
+        <DbtrAgt>
+          <FinInstnId>
+            <BICFI>COBADEFFXXX</BICFI> <!-- Updated to BICFI -->
+          </FinInstnId>
+        </DbtrAgt>
+        <Dbtr>
+          <Nm>John Smith</Nm>
+        </Dbtr>
+        <DbtrAcct>
+          <Id>
+            <IBAN>DE12500105170648489890</IBAN>
+          </Id>
+        </DbtrAcct>
+        <Purp>
+          <Cd>SUBS</Cd> <!-- Added optional purpose code -->
+        </Purp>
+        <RmtInf>
+          <Ustrd>Invoice 2025-123 Monthly Subscription</Ustrd>
+          <!-- Optional: Structured remittance example -->
+          <!-- <Strd>
+            <CdtrRefInf>
+              <Tp>
+                <CdOrPrtry>
+                  <Cd>SCOR</Cd>
+                </CdOrPrtry>
+              </Tp>
+              <Ref>INV2025-123</Ref>
+            </CdtrRefInf>
+          </Strd> -->
+        </RmtInf>
+      </DrctDbtTxInf>
+      <!-- Second Transaction -->
+      <DrctDbtTxInf>
+        <PmtId>
+          <EndToEndId>ENDTOEND-2025-04-26-2</EndToEndId>
+        </PmtId>
+        <InstdAmt Ccy="EUR">200.00</InstdAmt>
+        <ChrgBr>SLEV</ChrgBr> <!-- Added for pain.008.001.08 -->
+        <DrctDbtTx>
+          <MndtRltdInf>
+            <MndtId>MANDATE-2024-03-20-2</MndtId>
+            <DtOfSgntr>2024-03-20</DtOfSgntr>
+          </MndtRltdInf>
+        </DrctDbtTx>
+        <DbtrAgt>
+          <FinInstnId>
+            <BICFI>BYLADEM1001</BICFI> <!-- Updated to BICFI -->
+          </FinInstnId>
+        </DbtrAgt>
+        <Dbtr>
+          <Nm>Maria Garcia</Nm>
+        </Dbtr>
+        <DbtrAcct>
+          <Id>
+            <IBAN>DE02100500000054540402</IBAN>
+          </Id>
+        </DbtrAcct>
+        <Purp>
+          <Cd>SERV</Cd> <!-- Added optional purpose code -->
+        </Purp>
+        <RmtInf>
+          <Ustrd>Invoice 2025-124 Annual Service</Ustrd>
+        </RmtInf>
+      </DrctDbtTxInf>
+    </PmtInf>
+  </CstmrDrctDbtInitn>
+</Document>
+```
+
 
 # References :
 
