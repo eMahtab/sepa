@@ -310,6 +310,103 @@ The file requests collection of €600 total (€400 from John Smith and €200 
 </Document>
 ```
 
+# Payment Status Notification (PSN)
+
+First transaction (John Smith, €400): Accepted and paid successfully (status: ACCP).
+
+Second transaction (Maria Garcia, €200): Rejected due to insufficient funds (status: RJCT with SEPA reason code AC04 - "Account reported as closed" – adapted for example; in reality, use INSF for insufficient funds if needed)
+
+### PSN version : pain.002.001.10
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.002.001.10" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <notfn>
+    <GrpHdr>
+      <MsgId>MSGID-PSN-2025-05-15T12345</MsgId>
+      <CreDtTm>2025-05-15T14:00:00</CreDtTm>
+      <MsgRcpt>
+        <Nm>ACME Corporation</Nm>
+        <Id>
+          <OrgId>
+            <Othr>
+              <Id>DE98ZZZ09999999999</Id>
+              <SchmeNm>
+                <Prtry>SEPA</Prtry>
+              </SchmeNm>
+            </Othr>
+          </OrgId>
+        </Id>
+      </MsgRcpt>
+    </GrpHdr>
+    <OrgnlMsgInf>
+      <OrgnlMsgNmId>pain.008.001.08</OrgnlMsgNmId>
+      <OrgnlMsgId>MSGID-2025-04-26T12345</OrgnlMsgId>
+      <OrgnlCreDtTm>2025-04-26T10:30:00</OrgnlCreDtTm>
+    </OrgnlMsgInf>
+    <OrgnlPmtInfAndSts>
+      <OrgnlPmtInfId>PMTINFID-2025-04-26-1</OrgnlPmtInfId>
+      <OrgnlGrpInf>
+        <OrgnlMsgId>MSGID-2025-04-26T12345</OrgnlMsgId>
+        <OrgnlGrpSts>ACCP</OrgnlGrpSts> <!-- Overall group status: Accepted -->
+      </OrgnlGrpInf>
+      <TxInfAndSts>
+        <!-- First Transaction: Accepted -->
+        <OrgnlEndToEndId>ENDTOEND-2025-04-26-1</OrgnlEndToEndId>
+        <TxSts>ACCP</TxSts>
+        <OrgnlTxRef>
+          <IntrBkSttlmAmt Ccy="EUR">400.00</IntrBkSttlmAmt>
+          <PmtTpInf>
+            <SvcLvl>
+              <Cd>SEPA</Cd>
+            </SvcLvl>
+            <LclInstrm>
+              <Cd>CORE</Cd>
+            </LclInstrm>
+            <SeqTp>RCUR</SeqTp>
+          </PmtTpInf>
+        </OrgnlTxRef>
+        <StsRsnInf>
+          <Rsn>
+            <Cd>AC01</Cd> <!-- Requested execution date not in the system availability -->
+          </Rsn>
+        </StsRsnInf>
+      </TxInfAndSts>
+      <!-- Second Transaction: Rejected -->
+      <TxInfAndSts>
+        <OrgnlEndToEndId>ENDTOEND-2025-04-26-2</OrgnlEndToEndId>
+        <TxSts>RJCT</TxSts>
+        <OrgnlTxRef>
+          <IntrBkSttlmAmt Ccy="EUR">200.00</IntrBkSttlmAmt>
+          <PmtTpInf>
+            <SvcLvl>
+              <Cd>SEPA</Cd>
+            </SvcLvl>
+            <LclInstrm>
+              <Cd>CORE</Cd>
+            </LclInstrm>
+            <SeqTp>RCUR</SeqTp>
+          </PmtTpInf>
+        </OrgnlTxRef>
+        <StsRsnInf>
+          <Rsn>
+            <Cd>AC04</Cd> <!-- Account reported as closed (example rejection reason) -->
+          </Rsn>
+          <AddtlInf>Insufficient funds on debtor account</AddtlInf>
+        </StsRsnInf>
+        <RsltnInf>
+          <SttlmMtd>CLRG</SttlmMtd>
+          <SttlmAcct>
+            <Id>
+              <IBAN>DE89370400440532013000</IBAN>
+            </Id>
+          </SttlmAcct>
+        </RsltnInf>
+      </TxInfAndSts>
+    </OrgnlPmtInfAndSts>
+  </notfn>
+</Document>
+```
 
 # References :
 
