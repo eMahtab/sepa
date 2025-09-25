@@ -5,11 +5,11 @@ SEPA Direct Debit is an XML-based format that follows the ISO 20022 standard for
 
 This file contains:
 
-1. A header section (GrpHdr) with message identification, creation timestamp, transaction count, and creditor information
+1. **A header section (GrpHdr) with message identification, creation timestamp, transaction count, and creditor information**
 
-2. Payment information section (PmtInf) with details about the collection
+2. **Payment information section (PmtInf)** with details about the collection
 
-3. Two direct debit transactions (DrctDbtTxInf) for different customers
+3. **Two direct debit transactions (DrctDbtTxInf)** for different customers
 
 ## Key elements included:
 
