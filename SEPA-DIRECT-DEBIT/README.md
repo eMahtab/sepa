@@ -28,6 +28,7 @@ This is a CORE scheme file (for consumers) with RCUR sequence type (recurring pa
 The file requests collection of €600 total (€400 from John Smith and €200 from Maria Garcia) to be collected on May 10, 2025.
 
 
+## Sepa Direct Debit payment file - pain.008.001.02 version
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -156,7 +157,7 @@ The file requests collection of €600 total (€400 from John Smith and €200 
 </Document>
 ```
 
-## pain008.001.08 version
+## Sepa Direct Debit payment file - pain.008.001.08 version
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.008.001.08" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
