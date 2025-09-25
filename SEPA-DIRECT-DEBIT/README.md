@@ -321,7 +321,7 @@ Second transaction (Maria Garcia, €200): Rejected due to insufficient funds (s
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.002.001.10" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <notfn>
+  <CstmrPmtStsRpt>
     <GrpHdr>
       <MsgId>MSGID-PSN-2025-05-15T12345</MsgId>
       <CreDtTm>2025-05-15T14:00:00</CreDtTm>
@@ -339,23 +339,30 @@ Second transaction (Maria Garcia, €200): Rejected due to insufficient funds (s
         </Id>
       </MsgRcpt>
     </GrpHdr>
-    <OrgnlMsgInf>
-      <OrgnlMsgNmId>pain.008.001.08</OrgnlMsgNmId>
+    <OrgnlGrpInfAndSts>
       <OrgnlMsgId>MSGID-2025-04-26T12345</OrgnlMsgId>
+      <OrgnlMsgNmId>pain.008.001.08</OrgnlMsgNmId>
       <OrgnlCreDtTm>2025-04-26T10:30:00</OrgnlCreDtTm>
-    </OrgnlMsgInf>
+      <OrgnlNbOfTxs>2</OrgnlNbOfTxs>
+      <OrgnlCtrlSum>600.00</OrgnlCtrlSum>
+      <GrpSts>PART</GrpSts> <!-- Partially accepted due to one rejection -->
+    </OrgnlGrpInfAndSts>
     <OrgnlPmtInfAndSts>
       <OrgnlPmtInfId>PMTINFID-2025-04-26-1</OrgnlPmtInfId>
-      <OrgnlGrpInf>
-        <OrgnlMsgId>MSGID-2025-04-26T12345</OrgnlMsgId>
-        <OrgnlGrpSts>ACCP</OrgnlGrpSts> <!-- Overall group status: Accepted -->
-      </OrgnlGrpInf>
+      <OrgnlNbOfTxs>2</OrgnlNbOfTxs>
+      <OrgnlCtrlSum>600.00</OrgnlCtrlSum>
+      <PmtInfSts>PART</PmtInfSts> <!-- Partially accepted -->
       <TxInfAndSts>
         <!-- First Transaction: Accepted -->
         <OrgnlEndToEndId>ENDTOEND-2025-04-26-1</OrgnlEndToEndId>
         <TxSts>ACCP</TxSts>
+        <StsRsnInf>
+          <AddtlInf>Transaction successfully processed</AddtlInf>
+        </StsRsnInf>
         <OrgnlTxRef>
-          <IntrBkSttlmAmt Ccy="EUR">400.00</IntrBkSttlmAmt>
+          <Amt>
+            <InstdAmt Ccy="EUR">400.00</InstdAmt>
+          </Amt>
           <PmtTpInf>
             <SvcLvl>
               <Cd>SEPA</Cd>
@@ -365,19 +372,42 @@ Second transaction (Maria Garcia, €200): Rejected due to insufficient funds (s
             </LclInstrm>
             <SeqTp>RCUR</SeqTp>
           </PmtTpInf>
+          <MndtRltdInf>
+            <MndtId>MANDATE-2023-01-15-1</MndtId>
+            <DtOfSgntr>2023-01-15</DtOfSgntr>
+          </MndtRltdInf>
+          <Dbtr>
+            <Nm>John Smith</Nm>
+          </Dbtr>
+          <DbtrAcct>
+            <Id>
+              <IBAN>DE12500105170648489890</IBAN>
+            </Id>
+          </DbtrAcct>
+          <DbtrAgt>
+            <FinInstnId>
+              <BICFI>COBADEFFXXX</BICFI>
+            </FinInstnId>
+          </DbtrAgt>
         </OrgnlTxRef>
-        <StsRsnInf>
-          <Rsn>
-            <Cd>AC01</Cd> <!-- Requested execution date not in the system availability -->
-          </Rsn>
-        </StsRsnInf>
       </TxInfAndSts>
       <!-- Second Transaction: Rejected -->
       <TxInfAndSts>
         <OrgnlEndToEndId>ENDTOEND-2025-04-26-2</OrgnlEndToEndId>
         <TxSts>RJCT</TxSts>
+        <StsRsnInf>
+          <Orgtr>
+            <Nm>Debtor Bank</Nm>
+          </Orgtr>
+          <Rsn>
+            <Cd>AC04</Cd> <!-- Account reported as closed -->
+          </Rsn>
+          <AddtlInf>Debtor account closed or invalid</AddtlInf>
+        </StsRsnInf>
         <OrgnlTxRef>
-          <IntrBkSttlmAmt Ccy="EUR">200.00</IntrBkSttlmAmt>
+          <Amt>
+            <InstdAmt Ccy="EUR">200.00</InstdAmt>
+          </Amt>
           <PmtTpInf>
             <SvcLvl>
               <Cd>SEPA</Cd>
@@ -387,24 +417,27 @@ Second transaction (Maria Garcia, €200): Rejected due to insufficient funds (s
             </LclInstrm>
             <SeqTp>RCUR</SeqTp>
           </PmtTpInf>
-        </OrgnlTxRef>
-        <StsRsnInf>
-          <Rsn>
-            <Cd>AC04</Cd> <!-- Account reported as closed (example rejection reason) -->
-          </Rsn>
-          <AddtlInf>Insufficient funds on debtor account</AddtlInf>
-        </StsRsnInf>
-        <RsltnInf>
-          <SttlmMtd>CLRG</SttlmMtd>
-          <SttlmAcct>
+          <MndtRltdInf>
+            <MndtId>MANDATE-2024-03-20-2</MndtId>
+            <DtOfSgntr>2024-03-20</DtOfSgntr>
+          </MndtRltdInf>
+          <Dbtr>
+            <Nm>Maria Garcia</Nm>
+          </Dbtr>
+          <DbtrAcct>
             <Id>
-              <IBAN>DE89370400440532013000</IBAN>
+              <IBAN>DE02100500000054540402</IBAN>
             </Id>
-          </SttlmAcct>
-        </RsltnInf>
+          </DbtrAcct>
+          <DbtrAgt>
+            <FinInstnId>
+              <BICFI>BYLADEM1001</BICFI>
+            </FinInstnId>
+          </DbtrAgt>
+        </OrgnlTxRef>
       </TxInfAndSts>
     </OrgnlPmtInfAndSts>
-  </notfn>
+  </CstmrPmtStsRpt>
 </Document>
 ```
 
