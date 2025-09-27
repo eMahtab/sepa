@@ -444,7 +444,7 @@ Second transaction (Maria Garcia, €200): Rejected due to insufficient funds (s
 
 ## SDDO Workflow Service
 
-!["SDDO Workflow service"](resources/sddo-workflow.png?raw=true)
+!["SDDO Workflow service"](../resources/sddo-workflow.png?raw=true)
 
 # References :
 
